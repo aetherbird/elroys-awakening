@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cy8pwhwlnt00d"]
+
+[ext_resource type="Script" path="res://scenes/node_3d.gd" id="1_l3n5q"]
+[ext_resource type="SpriteFrames" uid="uid://dj02lssf2rto2" path="res://scenes/penguin_frames.tres" id="1_vikb7"]
+[ext_resource type="Script" path="res://scenes/Camera3D.gd" id="3_ih4sa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q385r"]
+size = Vector3(1, 1, 0.2)
+
+[node name="Character" type="CharacterBody3D"]
+script = ExtResource("1_l3n5q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.26266, 0)
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.521375, 0)
+billboard = 1
+texture_filter = 0
+sprite_frames = ExtResource("1_vikb7")
+animation = &"jump_back"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.226641, 0)
+shape = SubResource("BoxShape3D_q385r")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999999, -0.0014111, 0.000905665, 0.0013141, 0.995048, 0.0993862, -0.00104142, -0.0993848, 0.995049, 0, 0.686287, 1.44074)
+doppler_tracking = 2
+fov = 110.2
+script = ExtResource("3_ih4sa")

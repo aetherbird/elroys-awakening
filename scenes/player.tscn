@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkrb6rqrntnr6"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_27g8i"]
+[ext_resource type="SpriteFrames" uid="uid://dj02lssf2rto2" path="res://scenes/penguin_frames.tres" id="2_2j80o"]
+
+[node name="player" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_27g8i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_2j80o")
+animation = &"back_attack"
