@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var player = $player
+# Define the signal with an animation name as a parameter
 
 func _ready():
 	if realm.game_first_load == true:
