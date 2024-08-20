@@ -19,6 +19,7 @@ config/icon="res://graphic/objects/icon.svg"
 
 realm="*res://scripts/realm.gd"
 AudioHandler="*res://scenes/audio_handler.tscn"
+weather="*res://scenes/weather.tscn"
 
 [display]
 

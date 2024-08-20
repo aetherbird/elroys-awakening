@@ -1,22 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctj74vbcaty57"]
+[gd_scene load_steps=7 format=3 uid="uid://ctj74vbcaty57"]
 
 [ext_resource type="Script" path="res://scenes/world_a.gd" id="1_sjmoy"]
 [ext_resource type="TileSet" uid="uid://bwswotaye5a6o" path="res://tilemaps/world_a.tres" id="2_h13vj"]
 [ext_resource type="PackedScene" uid="uid://dkrb6rqrntnr6" path="res://scenes/player.tscn" id="3_abf2x"]
-[ext_resource type="PackedScene" uid="uid://b24c61klgvpes" path="res://scenes/snow_generator.tscn" id="4_1ht83"]
 [ext_resource type="PackedScene" uid="uid://o8y3se2tyr48" path="res://scenes/enemy.tscn" id="5_g8uk3"]
-[ext_resource type="Shader" path="res://shaders/fog2.gdshader" id="6_oxtps"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_urpky"]
-shader = ExtResource("6_oxtps")
-shader_parameter/color = Color(0.411224, 0.444704, 0.540812, 1)
-shader_parameter/OCTAVES = 4
-shader_parameter/enable_pixelation = true
-shader_parameter/pixelation_amount = 150
-shader_parameter/fog_direction = Vector2(1, 1)
-shader_parameter/scroll_noise_tex = false
-shader_parameter/noise_scroll_direction = Vector2(1, 0)
-shader_parameter/scroll_speed = 0.84
+[ext_resource type="PackedScene" uid="uid://cfp4pnd40tqo4" path="res://scenes/cloud_fog.tscn" id="6_cetl6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kw1wb"]
 size = Vector2(40, 20)
@@ -43,26 +31,11 @@ layer_3/tile_data = PackedInt32Array(65537, 1376260, 17, 327681, 1769476, 16, 65
 y_sort_enabled = true
 position = Vector2(176, 16)
 
-[node name="SnowGenerator" parent="." instance=ExtResource("4_1ht83")]
-z_index = 3
-position = Vector2(187, -24)
-
 [node name="enemy" parent="." instance=ExtResource("5_g8uk3")]
 position = Vector2(273, 108)
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-layer = 2
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-z_index = 1
-motion_mirroring = Vector2(1152, 648)
-
-[node name="ColorRect" type="ColorRect" parent="ParallaxBackground"]
-material = SubResource("ShaderMaterial_urpky")
-offset_right = 1152.0
-offset_bottom = 648.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="cloud_fog" parent="." instance=ExtResource("6_cetl6")]
+visible = false
 
 [node name="collisions" type="StaticBody2D" parent="."]
 

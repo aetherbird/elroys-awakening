@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfp4pnd40tqo4"]
+
+[ext_resource type="Shader" path="res://shaders/fog2.gdshader" id="1_c3pkc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_urpky"]
+shader = ExtResource("1_c3pkc")
+shader_parameter/color = Color(0.411224, 0.444704, 0.540812, 1)
+shader_parameter/OCTAVES = 4
+shader_parameter/enable_pixelation = true
+shader_parameter/pixelation_amount = 150
+shader_parameter/fog_direction = Vector2(1, 1)
+shader_parameter/scroll_noise_tex = false
+shader_parameter/noise_scroll_direction = Vector2(1, 0)
+shader_parameter/scroll_speed = 0.84
+
+[node name="cloud_fog" type="ParallaxBackground"]
+layer = 2
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+z_index = 1
+motion_mirroring = Vector2(1152, 648)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_urpky")
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
