@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgq07kbca84i3"]
+
+[ext_resource type="AudioStream" uid="uid://cm68vc21r0mw1" path="res://audio/ambience/blizzard_wind_1.wav" id="1_2556l"]
+[ext_resource type="Script" path="res://scenes/audio_handler.gd" id="1_vvv45"]
+[ext_resource type="AudioStream" uid="uid://crf3lqj1gk6yg" path="res://audio/music/ambient_piano_1.wav" id="2_0yt3y"]
+
+[node name="audio_handler" type="Node"]
+script = ExtResource("1_vvv45")
+
+[node name="AudioBlizzard1" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("1_2556l")
+volume_db = -1.486
+
+[node name="AudioPiano1" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_0yt3y")
+volume_db = -15.6
+
+[node name="piano_music_timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 14.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="piano_music_timer" to="." method="_on_piano_music_timer_timeout"]

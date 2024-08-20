@@ -18,6 +18,7 @@ config/icon="res://graphic/objects/icon.svg"
 [autoload]
 
 realm="*res://scripts/realm.gd"
+AudioHandler="*res://scenes/audio_handler.tscn"
 
 [display]
 
