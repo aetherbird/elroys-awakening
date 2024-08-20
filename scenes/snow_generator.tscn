@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b24c61klgvpes"]
 
 [sub_resource type="Gradient" id="Gradient_27lmn"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+colors = PackedColorArray(1, 1, 1, 0.882353, 1, 1, 1, 0.454902)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_gp7xp"]
 gradient = SubResource("Gradient_27lmn")
@@ -9,19 +9,19 @@ gradient = SubResource("Gradient_27lmn")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_on43u"]
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(400, 1, 1)
+emission_box_extents = Vector3(300, 1, 1)
 gravity = Vector3(7, 20, 0)
 radial_accel_min = -1.0
 radial_accel_max = -1.0
 damping_min = 5.0
 damping_max = 5.0
-scale_min = 2.0
-scale_max = 4.0
+scale_min = 0.4
+scale_max = 0.9
 color_ramp = SubResource("GradientTexture1D_gp7xp")
 
 [node name="SnowGenerator" type="GPUParticles2D"]
-position = Vector2(0, -27)
-amount = 2000
+position = Vector2(48, -22)
+amount = 20000
 process_material = SubResource("ParticleProcessMaterial_on43u")
-lifetime = 8.0
+lifetime = 6.0
 preprocess = 7.0

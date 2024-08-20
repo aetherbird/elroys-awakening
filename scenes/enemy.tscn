@@ -1,9 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://o8y3se2tyr48"]
+[gd_scene load_steps=21 format=3 uid="uid://o8y3se2tyr48"]
 
-[ext_resource type="Script" path="res://enemy.gd" id="1_pcbws"]
-[ext_resource type="Texture2D" uid="uid://dns383jvq38nu" path="res://assets/characters/enemies/spiked_slime/Spiked_slime_death.png" id="2_xlebl"]
-[ext_resource type="Texture2D" uid="uid://dmkhhjwhq3kcc" path="res://assets/characters/enemies/spiked_slime/Spiked_slime_idle.png" id="3_wgu4m"]
-[ext_resource type="Texture2D" uid="uid://b200da6cmgjh6" path="res://assets/characters/enemies/spiked_slime/Spiked_slime_walk.png" id="4_o0io6"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_pcbws"]
+[ext_resource type="Texture2D" uid="uid://dns383jvq38nu" path="res://graphic/characters/enemies/spiked_slime/Spiked_slime_death.png" id="2_xlebl"]
+[ext_resource type="Texture2D" uid="uid://dmkhhjwhq3kcc" path="res://graphic/characters/enemies/spiked_slime/Spiked_slime_idle.png" id="3_wgu4m"]
+[ext_resource type="Texture2D" uid="uid://b200da6cmgjh6" path="res://graphic/characters/enemies/spiked_slime/Spiked_slime_walk.png" id="4_o0io6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p6xlr"]
 atlas = ExtResource("2_xlebl")
@@ -113,6 +113,9 @@ radius = 62.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_a4q34"]
 radius = 5.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3tdkf"]
+radius = 10.0499
+
 [node name="enemy" type="CharacterBody2D"]
 script = ExtResource("1_pcbws")
 
@@ -135,5 +138,17 @@ shape = SubResource("CircleShape2D_upg4s")
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_a4q34")
 
+[node name="enemy_hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_3tdkf")
+
+[node name="take_damage_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="enemy_hitbox" to="." method="_on_enemy_hitbox_body_entered"]
+[connection signal="body_exited" from="enemy_hitbox" to="." method="_on_enemy_hitbox_body_exited"]
+[connection signal="timeout" from="take_damage_cooldown" to="." method="_on_take_damage_cooldown_timeout"]
