@@ -34,7 +34,7 @@ wait_time = 0.5
 [node name="deal_attack_timer" type="Timer" parent="."]
 wait_time = 0.4
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="world_camera" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 limit_left = 0
 limit_top = 0
@@ -50,6 +50,12 @@ drag_left_margin = 0.14
 drag_top_margin = 0.14
 drag_right_margin = 0.14
 drag_bottom_margin = 0.14
+
+[node name="cliffside_camera" type="Camera2D" parent="."]
+limit_left = -80
+limit_top = 1
+limit_right = 260
+limit_bottom = 1
 
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]

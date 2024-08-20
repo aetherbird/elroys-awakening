@@ -6,6 +6,9 @@ extends Node2D
 func _ready():
 	audio_blizzard_1.play()
 
+func _process(delta):
+	change_scene()
+
 func _on_cliffside_transition_point_body_entered(body):
 	if body.has_method("player"):
 		realm.transition_scene = true
@@ -16,7 +19,7 @@ func _on_cliffside_transition_point_body_exited(body):
 
 func change_scene():
 	if realm.transition_scene == true:
-		if realm.current_scene == "world":
+		if realm.current_scene == "world_a":
 			get_tree().change_scene_to_file("res://scenes/cliff_side.tscn")
 			realm.finish_scene_change()
 

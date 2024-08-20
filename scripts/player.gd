@@ -20,6 +20,7 @@ func _physics_process(delta):
 	player_movement(delta)
 	enemy_attack()
 	attack()
+	current_camera()
 	if health <= 0:
 		## End screen/game over screen here
 		player_alive = false
@@ -131,3 +132,10 @@ func _on_deal_attack_timer_timeout():
 	realm.player_current_attack = false
 	attack_inprog = false
 
+func current_camera():
+	if realm.current_scene == "world_a":
+		$world_camera.enabled = true
+		$cliffside_camera.enabled = false
+	elif realm.current_scene == "cliff_side":
+		$world_camera.enabled = false
+		$cliffside_camera.enabled = true
