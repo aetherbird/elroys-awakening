@@ -17,7 +17,7 @@ shader_parameter/scroll_speed = 0.84
 layer = 2
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-z_index = 3
+z_index = 2
 motion_mirroring = Vector2(1152, 648)
 
 [node name="ColorRect" type="ColorRect" parent="."]
