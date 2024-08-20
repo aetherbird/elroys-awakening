@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqio7v58yutrg"]
+[gd_scene load_steps=5 format=3 uid="uid://cqio7v58yutrg"]
 
 [ext_resource type="TileSet" uid="uid://bwswotaye5a6o" path="res://tilemaps/world_a.tres" id="1_icyx4"]
+[ext_resource type="Script" path="res://scenes/cliff_side.gd" id="1_joa6n"]
 [ext_resource type="PackedScene" uid="uid://dkrb6rqrntnr6" path="res://scenes/player.tscn" id="2_rv818"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bwews"]
+size = Vector2(45, 20)
+
 [node name="cliff_side" type="Node2D"]
+script = ExtResource("1_joa6n")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -26,3 +31,12 @@ polygon = PackedVector2Array(98, 193, 98, 166, 91, 161, 90, 148, 45, 147, 44, 58
 
 [node name="player" parent="." instance=ExtResource("2_rv818")]
 position = Vector2(119, 179)
+
+[node name="cliffside_exitpoint" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cliffside_exitpoint"]
+position = Vector2(120.5, 202)
+shape = SubResource("RectangleShape2D_bwews")
+
+[connection signal="body_entered" from="cliffside_exitpoint" to="." method="_on_cliffside_exitpoint_body_entered"]
+[connection signal="body_exited" from="cliffside_exitpoint" to="." method="_on_cliffside_exitpoint_body_exited"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="elroys_awakening"
-run/main_scene="res://scenes/world.tscn"
+run/main_scene="res://scenes/world_a.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://graphic/objects/icon.svg"
 
@@ -21,7 +21,6 @@ realm="*res://scripts/realm.gd"
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [file_customization]

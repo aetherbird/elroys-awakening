@@ -52,6 +52,8 @@ drag_right_margin = 0.14
 drag_bottom_margin = 0.14
 
 [node name="cliffside_camera" type="Camera2D" parent="."]
+enabled = false
+zoom = Vector2(4, 4)
 limit_left = -80
 limit_top = 1
 limit_right = 260
