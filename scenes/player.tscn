@@ -8,7 +8,7 @@
 radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56p1u"]
-radius = 12.0
+radius = 11.0454
 
 [node name="player" type="CharacterBody2D"]
 texture_filter = 1
@@ -20,7 +20,7 @@ shape = SubResource("CircleShape2D_itslu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_2j80o")
-animation = &"back_attack"
+animation = &"side_attack"
 offset = Vector2(0, -11)
 
 [node name="player_hitbox" type="Area2D" parent="."]

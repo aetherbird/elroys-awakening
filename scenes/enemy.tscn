@@ -147,7 +147,6 @@ radius = 62.0
 radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3tdkf"]
-radius = 10.0499
 
 [node name="enemy" type="CharacterBody2D"]
 script = ExtResource("1_pcbws")
@@ -157,7 +156,8 @@ modulate = Color(0.720467, 0.720468, 0.720467, 1)
 position = Vector2(4, 7)
 sprite_frames = SubResource("SpriteFrames_ec18y")
 animation = &"walk"
-frame_progress = 0.966835
+frame = 5
+frame_progress = 0.37131
 offset = Vector2(-4, -20)
 
 [node name="detection_area" type="Area2D" parent="."]
@@ -175,7 +175,7 @@ shape = SubResource("CircleShape2D_a4q34")
 [node name="enemy_hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
-position = Vector2(0, -4)
+position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_3tdkf")
 
 [node name="take_damage_cooldown" type="Timer" parent="."]

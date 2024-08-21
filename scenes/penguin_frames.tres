@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=107 format=3 uid="uid://dj02lssf2rto2"]
+[gd_resource type="SpriteFrames" load_steps=105 format=3 uid="uid://dj02lssf2rto2"]
 
 [ext_resource type="Texture2D" uid="uid://d0roj1agrxa7j" path="res://graphic/characters/penguin_back.png" id="1_nfa31"]
 [ext_resource type="Texture2D" uid="uid://cou1c0pd2hsp6" path="res://graphic/characters/penguin_sprite_sheet.png" id="3_6c1xb"]
@@ -98,10 +98,6 @@ region = Rect2(64, 256, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_khks2"]
 atlas = ExtResource("1_nfa31")
 region = Rect2(96, 256, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_snxqn"]
-atlas = ExtResource("3_cpg83")
-region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ctegq"]
 atlas = ExtResource("3_cpg83")
@@ -270,10 +266,6 @@ region = Rect2(0, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ubgaq"]
 atlas = ExtResource("6_pdfxu")
 region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ekjm2"]
-atlas = ExtResource("3_6c1xb")
-region = Rect2(0, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r84js"]
 atlas = ExtResource("3_6c1xb")
@@ -500,9 +492,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_snxqn")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_ctegq")
 }, {
 "duration": 1.0,
@@ -668,9 +657,6 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ekjm2")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_r84js")
 }, {
