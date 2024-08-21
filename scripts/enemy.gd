@@ -50,11 +50,17 @@ func deal_with_damage():
 	if player_inattack_zone and realm.player_current_attack == true:
 		if can_take_damage == true:
 			health = health -20
+			apply_knockback()  # Apply knockback effect
 			take_damage_cooldown.start()
 			can_take_damage = false
 			print("slime health = ", health)
 			if health <= 0:
 				self.queue_free()
+
+func apply_knockback():
+	var knockback_direction = (position - player.position).normalized()
+	var knockback_strength = 10  # Adjust this value to control the knockback distance
+	position += knockback_direction * knockback_strength
 
 func _on_take_damage_cooldown_timeout():
 	can_take_damage = true

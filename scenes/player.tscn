@@ -15,10 +15,6 @@ texture_filter = 1
 collision_layer = 3
 script = ExtResource("1_27g8i")
 
-[node name="lumea" parent="." instance=ExtResource("2_vajq1")]
-visible = false
-position = Vector2(-2, -12)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_itslu")
 
@@ -79,6 +75,8 @@ show_percentage = false
 [node name="regen_timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="lumea" parent="." instance=ExtResource("2_vajq1")]
 
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]

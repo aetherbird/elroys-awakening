@@ -6,6 +6,7 @@
 [sub_resource type="Animation" id="Animation_j265b"]
 resource_name = "lumea_flow"
 length = 14.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -46,6 +47,7 @@ texture = ExtResource("1_c5c4e")
 libraries = {
 "": SubResource("AnimationLibrary_j6q0x")
 }
+autoplay = "lumea_flow"
 
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
 position = Vector2(-2.67029e-05, -2.67029e-05)
