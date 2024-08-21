@@ -5,7 +5,7 @@ var current_direc = "none"
 
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
-var health = 200
+var health = 100
 var player_alive = true
 var attack_inprog = false
 
@@ -21,6 +21,7 @@ func _physics_process(delta):
 	enemy_attack()
 	attack()
 	current_camera()
+	update_health()
 	if health <= 0:
 		## End screen/game over screen here
 		player_alive = false
@@ -99,7 +100,7 @@ func _on_player_hitbox_body_exited(body):
 
 func enemy_attack():
 	if enemy_inattack_range and enemy_attack_cooldown == true:
-		health = health - 20
+		health = health - 10
 		enemy_attack_cooldown = false
 		attack_cooldown.start()
 		print(health)
@@ -139,3 +140,23 @@ func current_camera():
 	elif realm.current_scene == "cliff_side":
 		$world_camera.enabled = false
 		$cliffside_camera.enabled = true
+
+func update_health():
+	var healthbar = $healthbar
+	healthbar.value = health
+	if health >= 100:
+		healthbar.visible = false
+	else:
+		healthbar.visible = true
+
+func _on_regen_timer_timeout():
+	if health < 100:
+		health = health + 20
+		if health > 100:
+			health = 100
+		if health <= 0:
+			health = 0
+
+func increase_max_hp():
+	var healthbar = $healthbar
+	healthbar.max_value = healthbar.max_value + 20

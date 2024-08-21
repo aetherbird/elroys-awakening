@@ -53,8 +53,8 @@ attack={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="mobile"
-renderer/rendering_method.web="mobile"
+renderer/rendering_method.mobile="forward_plus"
+renderer/rendering_method.web="forward_plus"
 environment/defaults/default_clear_color=Color(0.537011, 0.537011, 0.537011, 1)
 
 [shader_globals]

@@ -15,13 +15,13 @@ radial_accel_min = -1.0
 radial_accel_max = -1.0
 damping_min = 5.0
 damping_max = 5.0
-scale_min = 0.4
-scale_max = 0.9
+scale_min = 0.8
+scale_max = 1.4
 color_ramp = SubResource("GradientTexture1D_gp7xp")
 
 [node name="SnowGenerator" type="GPUParticles2D"]
 position = Vector2(48, -22)
-amount = 20000
+amount = 5000
 process_material = SubResource("ParticleProcessMaterial_on43u")
 lifetime = 6.0
 preprocess = 7.0

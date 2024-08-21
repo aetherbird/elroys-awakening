@@ -1,13 +1,103 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctj74vbcaty57"]
+[gd_scene load_steps=21 format=3 uid="uid://ctj74vbcaty57"]
 
 [ext_resource type="Script" path="res://scenes/world_a.gd" id="1_sjmoy"]
 [ext_resource type="TileSet" uid="uid://bwswotaye5a6o" path="res://tilemaps/world_a.tres" id="2_h13vj"]
 [ext_resource type="PackedScene" uid="uid://dkrb6rqrntnr6" path="res://scenes/player.tscn" id="3_abf2x"]
 [ext_resource type="PackedScene" uid="uid://o8y3se2tyr48" path="res://scenes/enemy.tscn" id="5_g8uk3"]
-[ext_resource type="PackedScene" uid="uid://cfp4pnd40tqo4" path="res://scenes/cloud_fog.tscn" id="6_cetl6"]
+[ext_resource type="Texture2D" uid="uid://cmve7kgeyfdu1" path="res://graphic/objects/fire/fire2.png" id="6_4uxse"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kw1wb"]
 size = Vector2(40, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1m3vi"]
+atlas = ExtResource("6_4uxse")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixjd6"]
+atlas = ExtResource("6_4uxse")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwvdn"]
+atlas = ExtResource("6_4uxse")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2llhr"]
+atlas = ExtResource("6_4uxse")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdgbi"]
+atlas = ExtResource("6_4uxse")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rtqe"]
+atlas = ExtResource("6_4uxse")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6x53t"]
+atlas = ExtResource("6_4uxse")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u8yn"]
+atlas = ExtResource("6_4uxse")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7xeb"]
+atlas = ExtResource("6_4uxse")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhnbe"]
+atlas = ExtResource("6_4uxse")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qd077"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1m3vi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixjd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwvdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2llhr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdgbi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rtqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6x53t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0u8yn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7xeb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhnbe")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v2gwd"]
+radius = 6.03512
+
+[sub_resource type="Gradient" id="Gradient_s4fc6"]
+offsets = PackedFloat32Array(0, 0.721698)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_typna"]
+gradient = SubResource("Gradient_s4fc6")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="world_a" type="Node2D"]
 y_sort_enabled = true
@@ -34,9 +124,6 @@ position = Vector2(176, 16)
 [node name="enemy" parent="." instance=ExtResource("5_g8uk3")]
 position = Vector2(273, 108)
 
-[node name="cloud_fog" parent="." instance=ExtResource("6_cetl6")]
-visible = false
-
 [node name="collisions" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions"]
@@ -47,6 +134,27 @@ polygon = PackedVector2Array(0, 0, 0, 192, 416, 192, 416, 0, 196, 0, 196, -13, 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cliffside_transition_point"]
 position = Vector2(176, -10)
 shape = SubResource("RectangleShape2D_kw1wb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(130, 86)
+scale = Vector2(0.84375, 0.875)
+sprite_frames = SubResource("SpriteFrames_qd077")
+animation = &"fire"
+frame_progress = 0.536766
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D"]
+position = Vector2(0, 9.14286)
+shape = SubResource("CircleShape2D_v2gwd")
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D"]
+position = Vector2(-2.37037, 9.14286)
+scale = Vector2(10.1829, 8.45536)
+color = Color(1, 0.599686, 0.272837, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.741176)
+texture = SubResource("GradientTexture2D_typna")
+texture_scale = 0.25
 
 [connection signal="body_entered" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]
 [connection signal="body_exited" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_exited"]

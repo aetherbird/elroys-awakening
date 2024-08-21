@@ -25,6 +25,7 @@ func _physics_process(delta):
 			animated_sprite_2d.flip_h = false
 	else:
 		animated_sprite_2d.play("idle")
+	update_health()
 
 func _on_detection_area_body_entered(body):
 	player = body
@@ -57,3 +58,11 @@ func deal_with_damage():
 
 func _on_take_damage_cooldown_timeout():
 	can_take_damage = true
+
+func update_health():
+	var healthbar = $healthbar
+	healthbar.value = health
+	if health >= 100:
+		healthbar.visible = false
+	else:
+		healthbar.visible = true

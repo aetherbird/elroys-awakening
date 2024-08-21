@@ -11,7 +11,6 @@ func _ready():
 		player.position.y = realm.player_exit_cliffside_posy
 
 func _process(delta):
-	# Check if the scene should be changed
 	change_scene()
 
 func _on_cliffside_transition_point_body_entered(body):
@@ -24,11 +23,9 @@ func _on_cliffside_transition_point_body_exited(body):
 
 func change_scene():
 	if realm.transition_scene == true and realm.current_scene == "world_a":
-		# Play the fade-to-black transition before changing the scene
 		weather.play_fade_to_black()
-		# Connect the fade-to-black animation to change the scene when the animation is complete
 		var timer = Timer.new()
-		timer.wait_time = .1  # Adjust according to the fade-to-black animation length
+		timer.wait_time = .3  # Adjust according to the fade-to-black animation length
 		timer.one_shot = true
 		timer.connect("timeout", Callable(self, "_on_fade_to_black_complete"))
 		add_child(timer)
@@ -38,5 +35,4 @@ func _on_fade_to_black_complete():
 	get_tree().change_scene_to_file("res://scenes/cliff_side.tscn")
 	realm.game_first_load = false
 	realm.finish_scene_change()
-	# Play the fade from black transition after the scene change
 	weather.play_fade_from_black()

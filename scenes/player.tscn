@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkrb6rqrntnr6"]
+[gd_scene load_steps=6 format=3 uid="uid://dkrb6rqrntnr6"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_27g8i"]
 [ext_resource type="SpriteFrames" uid="uid://dj02lssf2rto2" path="res://scenes/penguin_frames.tres" id="2_2j80o"]
+[ext_resource type="PackedScene" uid="uid://bc4bdcvv2x62g" path="res://scenes/lumea.tscn" id="2_vajq1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_itslu"]
 radius = 4.0
@@ -13,6 +14,10 @@ radius = 12.0
 texture_filter = 1
 collision_layer = 3
 script = ExtResource("1_27g8i")
+
+[node name="lumea" parent="." instance=ExtResource("2_vajq1")]
+visible = false
+position = Vector2(-2, -12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_itslu")
@@ -52,6 +57,7 @@ drag_right_margin = 0.14
 drag_bottom_margin = 0.14
 
 [node name="cliffside_camera" type="Camera2D" parent="."]
+position = Vector2(-10, -12)
 enabled = false
 zoom = Vector2(4, 4)
 limit_left = 20
@@ -59,7 +65,23 @@ limit_top = 29
 limit_right = 262
 limit_bottom = 1
 
+[node name="healthbar" type="ProgressBar" parent="."]
+modulate = Color(0, 0.72549, 0.192157, 1)
+self_modulate = Color(3.65794e-06, 0.727113, 0.193914, 1)
+z_index = 5
+offset_left = -13.0
+offset_top = -18.0
+offset_right = 173.0
+offset_bottom = 9.0
+scale = Vector2(0.14, 0.14)
+show_percentage = false
+
+[node name="regen_timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="deal_attack_timer" to="." method="_on_deal_attack_timer_timeout"]
+[connection signal="timeout" from="regen_timer" to="." method="_on_regen_timer_timeout"]
